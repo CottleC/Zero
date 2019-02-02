@@ -15,14 +15,17 @@ namespace BlankProject
             var template = new EntityTemplate();
             template.AddComponent(new Position.Snapshot(), clientAttribute);
             template.AddComponent(new Metadata.Snapshot { EntityType = "User" }, UnityGameLogicConnector.WorkerType);
+            
+            template.AddComponent(new Player.PlayerInput.Snapshot(), clientAttribute);
             /*
-            template.AddComponent(new PlayerInput.Snapshot(), clientAttribute);
             template.AddComponent(new Launcher.Snapshot { EnergyLeft = 100, RechargeTimeLeft = 0 },
                 UnityGameLogicConnector.WorkerType);
             template.AddComponent(new Score.Snapshot(), WorkerUtils.UnityGameLogic);
             template.AddComponent(new CubeSpawner.Snapshot { SpawnedCubes = new List<EntityId>() },
                 UnityGameLogicConnector.WorkerType);
             */
+            template.AddComponent(new Player.PlayerData.Snapshot { IsAuthed = false, PlayerName="unauthorized player" },
+                WorkerUtils.UnityGameLogic);
             TransformSynchronizationHelper.AddTransformSynchronizationComponents(template, clientAttribute);
             PlayerLifecycleHelper.AddPlayerLifecycleComponents(template, workerId, clientAttribute,
                 UnityGameLogicConnector.WorkerType);

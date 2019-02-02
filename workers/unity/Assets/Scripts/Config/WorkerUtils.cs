@@ -38,8 +38,9 @@ namespace BlankProject
             world.GetOrCreateManager<FollowCameraSystem>();
             world.GetOrCreateManager<InitUISystem>();
             world.GetOrCreateManager<UpdateUISystem>();
-            world.GetOrCreateManager<PlayerCommandsSystem>();
             */
+            world.GetOrCreateManager<PlayerCommandsSystem>();
+            
             world.GetOrCreateManager<MetricSendSystem>();
         }
 

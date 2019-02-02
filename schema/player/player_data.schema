@@ -1,0 +1,22 @@
+package player;
+import "from_gdk_packages/com.improbable.gdk.core/common.schema";
+
+component PlayerData
+{
+    id = 100;
+    bool is_authed = 1;
+    string player_name = 2;
+    command ValidatePreauthResponse req_preauth_validate(ValidatePreauthRequest);
+}
+
+// Command sent by clients to request validating a preauth token.
+type ValidatePreauthRequest {
+    string pre_auth_token = 1;
+    EntityId player = 2;
+}
+
+type ValidatePreauthResponse {
+    bool is_authed = 1;
+    string player_name = 2;
+    EntityId player = 3;
+}
