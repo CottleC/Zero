@@ -10,10 +10,23 @@
         "Improbable.Gdk.PlayerLifecycle",
         "Unity.Entities",
         "Unity.Entities.Hybrid",
-        "Unity.Mathematics"
+        "Unity.Mathematics",
+        "Improbable.Gdk.GameObjectCreation"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false
+    "excludePlatforms": [
+        "Android",
+        "LinuxStandalone32",
+        "macOSStandalone",
+        "PS4",
+        "Switch",
+        "tvOS",
+        "XboxOne"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
 }
