@@ -18,12 +18,7 @@ namespace BlankProject
 
         protected override void HandleWorkerConnectionEstablished()
         {
-            Worker.World.GetOrCreateManager<DisconnectSystem>();
-            TransformSynchronizationHelper.AddClientSystems(Worker.World);
-            PlayerLifecycleHelper.AddClientSystems(Worker.World);
-
-            GameObjectRepresentationHelper.AddSystems(Worker.World);
-            GameObjectCreationHelper.EnableStandardGameObjectCreation(Worker.World);
+            WorkerUtils.AddClientSystems(Worker.World);
             PlayerLifecycleConfig.CreatePlayerEntityTemplate = PlayerTemplate.CreatePlayerEntityTemplate;
 
         }
