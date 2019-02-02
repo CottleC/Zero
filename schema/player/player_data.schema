@@ -18,5 +18,4 @@ type ValidatePreauthRequest {
 type ValidatePreauthResponse {
     bool is_authed = 1;
     string player_name = 2;
-    EntityId player = 3;
 }

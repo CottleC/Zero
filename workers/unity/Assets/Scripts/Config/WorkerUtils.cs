@@ -40,7 +40,8 @@ namespace BlankProject
             world.GetOrCreateManager<UpdateUISystem>();
             */
             world.GetOrCreateManager<PlayerCommandsSystem>();
-            
+            world.GetOrCreateManager<ProcessPlayerResponseSystem>();//process preauth responses from server
+
             world.GetOrCreateManager<MetricSendSystem>();
         }
 
@@ -51,6 +52,7 @@ namespace BlankProject
             PlayerLifecycleHelper.AddServerSystems(world);
             GameObjectRepresentationHelper.AddSystems(world);
             GameObjectCreationHelper.EnableStandardGameObjectCreation(world);
+            world.GetOrCreateManager<ProcessPlayerRequestSystem>();//preauth step, requests come from players
             /*
             world.GetOrCreateManager<CubeMovementSystem>();
             world.GetOrCreateManager<TriggerColorChangeSystem>();

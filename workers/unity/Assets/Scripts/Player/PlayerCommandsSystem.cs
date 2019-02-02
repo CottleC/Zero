@@ -32,7 +32,6 @@ namespace BlankProject
 
         protected override void OnUpdate()
         {
-            Debug.Log("PlayerData Command Sender");
             if (playerData.Length == 0)
             {
                 return;
@@ -51,19 +50,18 @@ namespace BlankProject
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("space command");
+                var sender = playerData.Sender[0];
+                var playerId = playerData.SpatialEntity[0].EntityId;
+
+                sender.RequestsToSend.Add(Player.PlayerData.ReqPreauthValidate.CreateRequest(playerId,
+                    new Player.ValidatePreauthRequest("test", playerId)));
+
+                playerData.Sender[0] = sender;
             }
             else
             { 
                 return;
             }
-
-            var sender = playerData.Sender[0];
-            var playerId = playerData.SpatialEntity[0].EntityId;
-
-            sender.RequestsToSend.Add(Player.PlayerData.ReqPreauthValidate.CreateRequest(playerId,
-                new Player.ValidatePreauthRequest("test", playerId)));
-
-            playerData.Sender[0] = sender;
         }
     }
 }
