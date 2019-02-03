@@ -38,14 +38,18 @@ namespace BlankProject
             {
                 var requests = playerRequestData.Requests[i].Requests;
                 var responders = playerRequestData.CommandResponders[i];
+                var pd = playerRequestData.PlayerData[i];
                 Debug.Log("received preauthReq" + requests);
-
                 foreach(var preAuthRequest in requests) {//handle if there are multi?
-                    var validationResponse = Player.PlayerData.ReqPreauthValidate.CreateResponse(preAuthRequest, new Player.ValidatePreauthResponse(true,"Gypeatus"));
-                    Debug.Log("Responding to preauth request");
+                    var payload = preAuthRequest.Payload;
+                    string theToken = payload.PreAuthToken;
+                    var validationResponse = Player.PlayerData.ReqPreauthValidate.CreateResponse(preAuthRequest, new Player.ValidatePreauthResponse());
                     responders.ResponsesToSend.Add(validationResponse);//queue this response
+                    pd.PlayerName = "Gypaetus";
+                    playerRequestData.PlayerData[i] = pd;//do the server-side assigning
+                    Debug.Log("Set pd "+ pd +" "+ playerRequestData.PlayerData[i].PlayerName);
                 }
-
+                Debug.Log("Responding to preauth request");
                 playerRequestData.CommandResponders[i] = responders;//assign this response to the processor!
             }
         }
