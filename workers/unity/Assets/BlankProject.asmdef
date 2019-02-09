@@ -15,15 +15,7 @@
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
-    "excludePlatforms": [
-        "Android",
-        "LinuxStandalone32",
-        "macOSStandalone",
-        "PS4",
-        "Switch",
-        "tvOS",
-        "XboxOne"
-    ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

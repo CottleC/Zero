@@ -12,14 +12,12 @@ using UnityEngine;
 // ReSharper disable ClassNeverInstantiated.Global
 
 #endregion
-
+    
 namespace BlankProject
 {
     [UpdateInGroup(typeof(SpatialOSUpdateGroup))]
     public class ProcessPlayerRequestSystem : ComponentSystem
     {
-        private const float RechargeTime = 2.0f;
-
         private struct PlayerRequestData
         {
             public readonly int Length;
