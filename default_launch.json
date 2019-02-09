@@ -26,6 +26,21 @@
         "options": {
           "manual_worker_connection_only": true
         }
+      },
+      {
+        "layer": "example_attribute_of_managed_worker",
+        "points_of_interest": {
+          "num_workers": 1,
+          "points": [
+            {
+              "x": 0,
+              "z": 0
+            }
+          ]
+        },
+        "options": {
+          "manual_worker_connection_only": false
+        }
       }
     ]
   },
@@ -40,6 +55,14 @@
     },
     {
       "worker_type": "UnityClient",
+      "permissions": [
+        {
+          "all": {}
+        }
+      ]
+    },
+    {
+      "worker_type": "example_attribute_of_managed_worker",
       "permissions": [
         {
           "all": {}
