@@ -25,12 +25,12 @@ namespace BlankProject
                 UnityGameLogicConnector.WorkerType);
             */
             template.AddComponent(new Player.PlayerData.Snapshot { IsAuthed = false, PlayerName="unauthorized player" },
-                WorkerUtils.UnityGameLogic);
+                "GRPCManager");
             TransformSynchronizationHelper.AddTransformSynchronizationComponents(template, clientAttribute);
             PlayerLifecycleHelper.AddPlayerLifecycleComponents(template, workerId, clientAttribute,
                 UnityGameLogicConnector.WorkerType);
 
-            template.SetReadAccess(UnityClientConnector.WorkerType, UnityGameLogicConnector.WorkerType);
+            template.SetReadAccess(UnityClientConnector.WorkerType, UnityGameLogicConnector.WorkerType, "GRPCManager");
             template.SetComponentWriteAccess(EntityAcl.ComponentId, UnityGameLogicConnector.WorkerType);
 
             return template; 

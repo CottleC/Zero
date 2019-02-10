@@ -28,7 +28,7 @@
         }
       },
       {
-        "layer": "example_attribute_of_managed_worker",
+        "layer": "GRPCManager",
         "points_of_interest": {
           "num_workers": 1,
           "points": [
@@ -39,7 +39,7 @@
           ]
         },
         "options": {
-          "manual_worker_connection_only": false
+          "manual_worker_connection_only": true
         }
       }
     ]
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "worker_type": "example_attribute_of_managed_worker",
+      "worker_type": "GRPCManager",
       "permissions": [
         {
           "all": {}

@@ -55,10 +55,23 @@ namespace Managed
                     }
                 });
 
+                dispatcher.OnAddEntity(op => {
+                    Console.WriteLine("An entity was added to the dispatcher:", op.EntityId);
+                });
+
+                dispatcher.OnComponentUpdate<Player.PlayerData>(op=> {
+                    Console.WriteLine("An component was updated:", op.EntityId);
+                });
+
+                dispatcher.OnCommandRequest<Player.PlayerData.Commands.ReqPreauthValidate>(op => {
+                    Console.WriteLine("RequestValidateRequest:", op.EntityId);
+                });
+
                 while (isConnected)
                 {
                     using (var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds))
                     {
+                        Console.WriteLine("dispatcher loop:", opList.ToString());
                         dispatcher.Process(opList);
                     }
                 }
@@ -92,8 +105,10 @@ namespace Managed
             }
 
             connection.SendLogMessage(LogLevel.Info, LoggerName, "Successfully connected using the Receptionist");
+            Console.WriteLine("init:", connection);
 
             return connection;
         }
+
     }
 }
