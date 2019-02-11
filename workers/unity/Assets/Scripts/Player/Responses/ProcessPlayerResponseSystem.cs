@@ -22,7 +22,7 @@ namespace BlankProject
         private struct PlayerResponseData
         {
             public readonly int Length;
-            public ComponentDataArray<Player.PlayerData.CommandResponses.ReqPreauthValidate> ReceivedValidateAuthResponses;
+            public ComponentDataArray<Player.PlayerAuth.CommandResponses.ReqPreauthValidate> ReceivedValidateAuthResponses;
         }
 
         [Inject] private PlayerResponseData playerResponseData;

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using Improbable.Worker;
 
@@ -59,19 +60,21 @@ namespace Managed
                     Console.WriteLine("An entity was added to the dispatcher:", op.EntityId);
                 });
 
-                dispatcher.OnComponentUpdate<Player.PlayerData>(op=> {
+                dispatcher.OnComponentUpdate<Player.PlayerAuth>(op=> {
                     Console.WriteLine("An component was updated:", op.EntityId);
                 });
-
-                dispatcher.OnCommandRequest<Player.PlayerData.Commands.ReqPreauthValidate>(op => {
-                    Console.WriteLine("RequestValidateRequest:", op.EntityId);
+                    
+                dispatcher.OnCommandRequest<Player.PlayerAuth.Commands.ReqPreauthValidate>(op => {
+                    Console.WriteLine("RequestValidateRequest:" + op.EntityId.Id.ToString() + " ");
+                    Player.PlayerAuth.Commands.ReqPreauthValidate.Request opReq = op.Request as Player.PlayerAuth.Commands.ReqPreauthValidate.Request;
+                    Console.WriteLine("the OpReq is "+ opReq.Value.preAuthToken);
                 });
 
                 while (isConnected)
                 {
                     using (var opList = connection.GetOpList(GetOpListTimeoutInMilliseconds))
                     {
-                        Console.WriteLine("dispatcher loop:", opList.ToString());
+                        //Console.WriteLine("dispatcher loop:", opList.ToString());
                         dispatcher.Process(opList);
                     }
                 }

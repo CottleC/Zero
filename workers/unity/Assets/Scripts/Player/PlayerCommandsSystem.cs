@@ -25,7 +25,7 @@ namespace BlankProject
             public readonly int Length;
             [ReadOnly] public ComponentDataArray<SpatialEntityId> SpatialEntity;
             [ReadOnly] public ComponentDataArray<Authoritative<Player.PlayerInput.Component>> PlayerInputAuthority;
-            public ComponentDataArray<Player.PlayerData.CommandSenders.ReqPreauthValidate> Sender;
+            public ComponentDataArray<Player.PlayerAuth.CommandSenders.ReqPreauthValidate> Sender;
         }
 
         [Inject] private PlayerData playerData;
@@ -53,7 +53,7 @@ namespace BlankProject
                 var sender = playerData.Sender[0];
                 var playerId = playerData.SpatialEntity[0].EntityId;
 
-                sender.RequestsToSend.Add(Player.PlayerData.ReqPreauthValidate.CreateRequest(playerId,
+                sender.RequestsToSend.Add(Player.PlayerAuth.ReqPreauthValidate.CreateRequest(playerId,
                     new Player.ValidatePreauthRequest("test", playerId)));
 
                 playerData.Sender[0] = sender;

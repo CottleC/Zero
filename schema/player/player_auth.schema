@@ -1,7 +1,7 @@
 package player;
 import "from_gdk_packages/com.improbable.gdk.core/common.schema";
 
-component PlayerData
+component PlayerAuth
 {
     id = 100;
     bool is_authed = 1;

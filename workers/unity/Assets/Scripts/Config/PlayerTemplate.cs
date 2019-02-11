@@ -24,7 +24,7 @@ namespace BlankProject
             template.AddComponent(new CubeSpawner.Snapshot { SpawnedCubes = new List<EntityId>() },
                 UnityGameLogicConnector.WorkerType);
             */
-            template.AddComponent(new Player.PlayerData.Snapshot { IsAuthed = false, PlayerName="unauthorized player" },
+            template.AddComponent(new Player.PlayerAuth.Snapshot { IsAuthed = false, PlayerName="unauthorized player" },
                 "GRPCManager");
             TransformSynchronizationHelper.AddTransformSynchronizationComponents(template, clientAttribute);
             PlayerLifecycleHelper.AddPlayerLifecycleComponents(template, workerId, clientAttribute,
